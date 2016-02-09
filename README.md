@@ -3,7 +3,9 @@ AngularJS-Starter
 
 This application provides a foundation to get started with building 1.x AngularJS apps with the Kinvey AngularJS Library.
 
-## Set up Starter App
+** Note: This starter app uses the Kinvey AngularJS Beta Library **
+
+## Setup Starter App
 
 1. Download the [AngularJS-Starter](https://github.com/KinveyApps/AngularJS-Starter/archive/master.zip) project.
 2. Open a terminal window to the location you downloaded the project.
@@ -14,7 +16,7 @@ This application provides a foundation to get started with building 1.x AngularJ
 1. Open a terminal window to the location you downloaded the project.
 2. Run `gulp serve`.
 
-##License
+## License
 
 Copyright (c) 2016 Kinvey Inc.
 
