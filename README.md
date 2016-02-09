@@ -3,7 +3,7 @@ AngularJS-Starter
 
 This application provides a foundation to get started with building 1.x AngularJS apps with the Kinvey AngularJS Library.
 
-_Note: This starter app uses the Kinvey AngularJS Beta Library_
+_Note: This starter app uses the [Kinvey AngularJS Beta Library](http://devcenter.kinvey.com/angular-v3.0)_
 
 ## Setup Starter App
 
