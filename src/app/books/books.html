@@ -1,0 +1,31 @@
+<div class="row books">
+  <div class="col-md-12">
+    <div class="page-header">
+      <h1>Bookshelf</h1>
+    </div>
+
+    <div class="row book" ng-repeat="book in vm.books track by book._id">
+      <div class="col-md-4">
+        <div class="spacer20"></div>
+        <img src="http://patorjk.com/images/blog-2012/js-book.png" class="img-responsive center-block" alt="Responsive image">
+      </div>
+      <div class="col-md-8">
+        <h3>{{book.title}} <small>by {{book.author}}</small></h3>
+        <p>
+          {{book.preview}}
+        </p>
+        <div>
+          <button type="button" class="btn btn-danger" ng-click="vm.delete(book)">Delete</button>
+          <button type="button" class="btn btn-primary" ng-click="vm.view(book)">View More...</button>
+        </div>
+      </div>
+    </div>
+    <div class="row add-book">
+      <div class="col-md-12">
+        <div class="well text-center" ng-click="vm.add()">
+          <h1>Tap to Add a Book</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
