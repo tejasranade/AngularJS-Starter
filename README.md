@@ -3,7 +3,7 @@ AngularJS-Starter
 
 This application provides a foundation to get started with building 1.x AngularJS apps with the Kinvey AngularJS Library.
 
-** Note: This starter app uses the Kinvey AngularJS Beta Library **
+_Note: This starter app uses the Kinvey AngularJS Beta Library_
 
 ## Setup Starter App
 
@@ -25,7 +25,8 @@ in compliance with the License. You may obtain a copy of the License at
 
  http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software distributed under the License
+Unless required by applicable law or agreed to in
+writing, software distributed under the License
 is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
 or implied. See the License for the specific language governing permissions and limitations under
 the License.
