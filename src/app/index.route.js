@@ -12,13 +12,7 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/books/books.html',
       controller: 'BooksController',
       controllerAs: 'vm',
-      authenticate: true,
-      resolve: {
-        books: ['$kinvey', function($kinvey) {
-          const booksDataStore = $kinvey.DataStore.getInstance('books');
-          return booksDataStore.find();
-        }]
-      }
+      authenticate: true
     });
 
   $urlRouterProvider.otherwise('/');

@@ -31,12 +31,28 @@ class BookController {
 }
 
 export class BooksController {
-  constructor (books, $scope, $kinvey, $uibModal) {
+  constructor ($scope, $kinvey, $uibModal) {
     'ngInject';
-    this.books = books;
+    this.books = [];
     this.$scope = $scope;
     this.$kinvey = $kinvey;
     this.$uibModal = $uibModal;
+    this.activate();
+  }
+
+  activate() {
+    const booksDataStore = this.$kinvey.DataStore.getInstance('books', Kinvey.DataStoreType.Cache);
+    booksDataStore.find().then(response => {
+      // response.cache contains the books in the device's cache
+      this.books = response.cache;
+
+      // Execute the network request to retrieve an new or update books
+      return response.networkRequest.execute();
+    }).then(books => {
+      // Books is a merge of any new or updated books from the network and
+      // existing books that had not changed from the cache
+      this.books = books;
+    });
   }
 
   view(book = {}) {
