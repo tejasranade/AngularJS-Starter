@@ -31,12 +31,24 @@ class BookController {
 }
 
 export class BooksController {
-  constructor (books, $scope, $kinvey, $uibModal) {
+  constructor ($scope, $kinvey, $uibModal) {
     'ngInject';
-    this.books = books;
+    this.books = [];
     this.$scope = $scope;
     this.$kinvey = $kinvey;
     this.$uibModal = $uibModal;
+    this.activate();
+  }
+
+  activate() {
+    const store = this.$kinvey.DataStore.getInstance('books');
+    store.find().then(result => {
+      this.books = result.cache;
+      return result.network;
+    }).then(books => {
+      this.books = books;
+      this.$scope.$digest();
+    });
   }
 
   view(book = {}) {

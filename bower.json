@@ -14,7 +14,7 @@
     "angular-bootstrap": "~0.14.3",
     "animate.css": "~3.4.0",
     "angular": "~1.4.2",
-    "kinvey-angular-lib": "^3.0.0",
+    "kinvey-angular-lib": "^3.0.0-beta.5",
     "ngstorage": "^0.3.10"
   },
   "devDependencies": {
