@@ -10,20 +10,15 @@ export class AuthService {
   }
 
   login(username, password) {
-    return this.$kinvey.User.login(username, password).then(user => {
+    const user = new this.$kinvey.User();
+    return user.login(username, password).then(user => {
       this.$localStorage.authenticated = true;
       return user;
     });
   }
 
   logout() {
-    return this.$kinvey.User.getActive().then(user => {
-      if (user) {
-        return user.logout();
-      }
-
-      throw new Error('There is not an active user to logout.');
-    }).then(() => {
+    return this.$kinvey.User.logout().then(() => {
       this.$localStorage.authenticated = false;
     });
   }

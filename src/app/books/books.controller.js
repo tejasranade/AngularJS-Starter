@@ -7,8 +7,8 @@ class AddBookController {
   }
 
   save(book = {}) {
-    const booksDataStore = this.$kinvey.DataStore.getInstance('books');
-    return booksDataStore.save(book).then(book => {
+    const store = this.$kinvey.DataStore.getInstance('books', this.$kinvey.DataStoreType.Sync);
+    return store.save(book).then(book => {
       this.$uibModalInstance.close(book);
     });
   }
@@ -31,24 +31,18 @@ class BookController {
 }
 
 export class BooksController {
-  constructor ($scope, $kinvey, $uibModal) {
+  constructor (books, $scope, $kinvey, $uibModal, $window) {
     'ngInject';
-    this.books = [];
+    this.books = books;
     this.$scope = $scope;
     this.$kinvey = $kinvey;
     this.$uibModal = $uibModal;
+    this.$window = $window;
     this.activate();
   }
 
   activate() {
-    const store = this.$kinvey.DataStore.getInstance('books');
-    store.find().then(result => {
-      this.books = result.cache;
-      return result.network;
-    }).then(books => {
-      this.books = books;
-      this.$scope.$digest();
-    });
+    this.refresh();
   }
 
   view(book = {}) {
@@ -85,9 +79,26 @@ export class BooksController {
       }
     }
 
-    const booksDataStore = this.$kinvey.DataStore.getInstance('books');
-    return booksDataStore.removeById(book._id).catch(() => {
+    const store = this.$kinvey.DataStore.getInstance('books', this.$kinvey.DataStoreType.Sync);
+    return store.removeById(book._id).catch(() => {
       this.books.push(book);
+    });
+  }
+
+  refresh() {
+    const store = this.$kinvey.DataStore.getInstance('books', this.$kinvey.DataStoreType.Sync);
+    store.pull().then(books => {
+      this.books = books;
+      this.$scope.$digest();
+    }).catch(error => {
+      this.$window.alert(error.message);
+    });
+  }
+
+  sync() {
+    const store = this.$kinvey.DataStore.getInstance('books', this.$kinvey.DataStoreType.Sync);
+    store.push().then(result => {
+      this.$window.alert(`Sync successfully ${result.success.length} entities and failed to sync ${result.error.length}.`);
     });
   }
 }
