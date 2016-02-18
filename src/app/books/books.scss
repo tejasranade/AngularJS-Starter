@@ -1,4 +1,13 @@
 .books {
+  .page-header {
+    .pull-right {
+      .btn-group{
+        position: relative;
+        top: 20px;
+      }
+    }
+  }
+
   .book {
     border-bottom: 1px solid #eee;
     padding-bottom: 40px;
