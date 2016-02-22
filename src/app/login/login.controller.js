@@ -10,4 +10,12 @@ export class LoginController {
       this.$state.go('books');
     });
   }
+
+  loginWithMIC() {
+    return this.AuthService.loginWithMIC().then(() => {
+      this.$state.go('books');
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 }
