@@ -1,9 +1,9 @@
-class AddBookController {
-  constructor($uibModalInstance, $kinvey) {
+class BookController {
+  constructor(book, $kinvey, $uibModalInstance) {
     'ngInject';
-    this.$uibModalInstance = $uibModalInstance;
+    this.book = book;
     this.$kinvey = $kinvey;
-    this.book = {};
+    this.$uibModalInstance = $uibModalInstance;
   }
 
   save(book = {}) {
@@ -14,18 +14,6 @@ class AddBookController {
   }
 
   cancel() {
-    this.$uibModalInstance.dismiss('cancel');
-  }
-}
-
-class BookController {
-  constructor(book, $uibModalInstance) {
-    'ngInject';
-    this.book = book;
-    this.$uibModalInstance = $uibModalInstance;
-  }
-
-  ok() {
     this.$uibModalInstance.close();
   }
 }
@@ -62,9 +50,14 @@ export class BooksController {
   add() {
     return this.$uibModal.open({
       animation: true,
-      templateUrl: 'app/books/addBook.html',
-      controller: AddBookController,
-      controllerAs: 'vm'
+      templateUrl: 'app/books/book.html',
+      controller: BookController,
+      controllerAs: 'vm',
+      resolve: {
+        book: function() {
+          return {};
+        }
+      }
     }).result.then(book => {
       this.books.push(book);
       return book;
