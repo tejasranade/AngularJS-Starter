@@ -13,7 +13,6 @@ angular.module('starter', [
   'ngSanitize',
   'ngMessages',
   'ngAria',
-  'ngStorage',
   'ui.router',
   'ui.bootstrap',
   'kinvey'
@@ -23,4 +22,4 @@ angular.module('starter', [
   .controller('BooksController', BooksController)
   .controller('LoginController', LoginController)
   .directive('navbar', NavbarDirective)
-  .service('AuthService', ($kinvey, $localStorage) => new AuthService($kinvey, $localStorage));
+  .service('AuthService', ($kinvey) => new AuthService($kinvey));
