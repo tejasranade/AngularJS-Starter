@@ -90,8 +90,9 @@ export class BooksController {
 
   sync() {
     const store = this.$kinvey.DataStore.getInstance('books', this.$kinvey.DataStoreType.Sync);
-    store.push().then(result => {
-      this.$window.alert(`Sync successfully ${result.success.length} entities and failed to sync ${result.error.length}.`);
+    store.sync().then(result => {
+      this.$window.alert(`Pulled successfully ${result.pull.length} entities.`);
+      this.$window.alert(`Pushed successfully ${result.push.success.length} entities and failed to push ${result.push.error.length} entities.`);
     });
   }
 }

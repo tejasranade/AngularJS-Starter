@@ -15,7 +15,7 @@ export class LoginController {
     return this.AuthService.loginWithMIC().then(() => {
       this.$state.go('books');
     }).catch(error => {
-      console.log(error);
+      alert(error.message);
     });
   }
 }
