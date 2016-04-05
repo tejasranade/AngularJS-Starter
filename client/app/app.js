@@ -19,8 +19,8 @@ angular.module('app', [
 
     // Initialize kinvey
     $kinveyProvider.init({
-      appKey: 'kid_byGoHmnX2',
-      appSecret: '9b8431f34279434bbedaceb2fe6b8fb5'
+      appKey: '<app-key>',
+      appSecret: '<app-secret>'
     });
 
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
