@@ -10,7 +10,7 @@ _Note: This starter app uses the [Kinvey AngularJS Beta Library](http://devcente
 1. Download the [AngularJS-Starter](https://github.com/KinveyApps/AngularJS-Starter/archive/master.zip) project.
 2. Open a terminal window to the location you downloaded the project.
 3. Run `npm install`.
-4. Replace `<app-key>` and `<app-secret>` in `clint/app/app.js`.
+4. Replace `<app-key>` and `<app-secret>` in `client/app/app.js`.
 
 ## Run
 1. Open a terminal window to the location you downloaded the project.
